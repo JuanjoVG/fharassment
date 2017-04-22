@@ -5,6 +5,15 @@
   <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
   <link rel="stylesheet" type="text/css" href="./assets/lib/bootstrap/dist/css/bootstrap.min.css" />
   <link rel="stylesheet" type="text/css" href="./assets/css/keen-dashboards.css" />
+  <!-- Load c3.css -->
+  <link href="./assets/css/c3.min.css" rel="stylesheet" type="text/css">
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
 </head>
 <body class="application">
 
@@ -20,15 +29,21 @@
         <a class="navbar-brand" href="../">
           <span class="glyphicon glyphicon-chevron-left"></span>
         </a>
-        <a class="navbar-brand" href="./">Dashboard Starter UI</a>
+        <a class="navbar-brand" href="./">fHarassment</a>
       </div>
       <div class="navbar-collapse collapse">
-        <ul class="nav navbar-nav navbar-left">
-          <li><a href="https://keen.io">Home</a></li>
-          <li><a href="https://keen.io/team">Team</a></li>
-          <li><a href="https://github.com/keenlabs/dashboards/tree/gh-pages/examples/starter-kit">Source</a></li>
-          <li><a href="https://groups.google.com/forum/#!forum/keen-io-devs">Community</a></li><li><a href="http://stackoverflow.com/questions/tagged/keen-io?sort=newest&pageSize=15">Technical Support</a></li>
-        </ul>
+        <div class="input-group">
+          <form action="/action_page.php"> <!-- TODO: poner url de Edu -->
+          <ul class="nav navbar-nav navbar-left">
+            <li><label for="audio">Select Audio files</label>
+            <input id="audio" type="file" name="audio" multiple>
+            <li><label for="text">Select WhatsApp Conversation</label>
+            <input id="text" type="file" name="text" multiple>
+            <li><label for="audio">   </label>
+            <input type="submit" value="Analyze!"></li>
+          </ul>
+          </form>
+        </div>
       </div>
     </div>
   </div>
@@ -42,7 +57,7 @@
             Pageviews by browser (past 24 hours)
           </div>
           <div class="chart-stage">
-            <div id="chart-01"></div>
+            <div id="chart"></div>
           </div>
           <div class="chart-notes">
             This is a sample text region to describe this chart.
@@ -153,6 +168,11 @@
   <script type="text/javascript" src="./assets/lib/keen-js/dist/keen.min.js"></script>
   <script type="text/javascript" src="./assets/js/meta.js"></script>
   <script type="text/javascript" src="keen.dashboard.js"></script>
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <!-- Load d3.js and c3.js -->
+  <script src="./assets/js/d3.v3.min.js" charset="utf-8"></script>
+  <script src="./assets/js/c3.min.js"></script>
 
 </body>
 </html>
