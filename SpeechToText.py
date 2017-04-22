@@ -1,4 +1,4 @@
-from os.path import join, dirname
+import io
 
 import watson_developer_cloud as wdc
 
@@ -19,8 +19,27 @@ class SpeechToText:
         return text
 
     def parse_watson(self, file_path, model='es-ES_NarrowbandModel'):
-        with open(join(dirname(__file__), file_path), 'rb') as audio_file:
+        with io.open(file_path, 'rb') as audio_file:
             recognition = self.speech_to_text.recognize(audio_file, content_type='audio/ogg', timestamps=False,
                                                         word_confidence=True, continuous=True, model=model)
             text = self.extract_text_from_speech(recognition['results'])
+        return text
+
+    def parse_google(self, file_path, model='es-ES'):
+        """Transcribe the given audio file."""
+        from google.cloud import speech
+        speech_client = speech.Client()
+
+        with io.open(file_path, 'rb') as audio_file:
+            content = audio_file.read()
+            audio_sample = speech_client.sample(
+                content=content,
+                source_uri=None,
+                encoding='LINEAR16',
+                sample_rate_hertz=44100)
+
+        alternatives = audio_sample.recognize(model)
+        text = ""
+        for alternative in alternatives:
+            text += str(alternative).capitalize() + '\n'
         return text
