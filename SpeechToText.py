@@ -41,5 +41,5 @@ class SpeechToText:
         alternatives = audio_sample.recognize(model)
         text = ""
         for alternative in alternatives:
-            text += str(alternative).capitalize() + '\n'
+            text += alternative.transcript.capitalize() + '\n'
         return text
