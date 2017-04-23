@@ -1,6 +1,7 @@
 import json
 import re
 
+import flask
 from flask import Flask, request, abort
 
 from HarassmentDetector import HarassmentDetector
@@ -59,7 +60,6 @@ def get_scores(sentiments_by_author):
 def get_harassment_response(harassment):
     return harassment.tolist()
 
-
 @app.route("/recognize", methods=["POST"])
 def hello():
     recognition_type = request.args.get("type")
@@ -71,12 +71,15 @@ def hello():
             harassment = detect_harassment(tone_scores)
             response = get_harassment_response(harassment)
             return json.dumps(response, indent=2)
-        elif recognition_type == "audio":
+        # elif recognition_type == "audio":
+        else:
+            uploaded_files = flask.request.files.getlist("file[]")
+            print(uploaded_files)
             audio_file = request.files['audio']
             transcription = speech_to_text.transcript_audio(audio_file.stream)
             return transcription
-        else:
-            abort(400)
+            # else:
+            #     abort(400)
     else:
         abort(400)
 

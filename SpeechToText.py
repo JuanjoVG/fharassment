@@ -1,7 +1,6 @@
 import io
 
 import watson_developer_cloud as wdc
-from google.cloud import speech
 
 
 class SpeechToText:
@@ -12,7 +11,6 @@ class SpeechToText:
         password='C0hPWUHiMBjb'
     )
 
-    speech_client = speech.Client()
 
     def extract_text_from_speech(self, results):
         text = ""
@@ -35,6 +33,9 @@ class SpeechToText:
             return text
 
     def transcript_audio(self, audio_file, model='es-ES'):
+        from google.cloud import speech
+        speech_client = speech.Client()
+
         content = audio_file.read()
         audio_sample = self.speech_client.sample(
             content=content,

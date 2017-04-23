@@ -11,17 +11,17 @@ function drawSplineChart() {
     });
 }
 
-$('#myForm').submit(function(e){
-    e.preventDefault();
-    $.ajax({
-        url:'/Car/Edit/17/',
-        type:'post',
-        data:$('#myForm').serialize(),
-        success:function(){
-            //whatever you wanna do after the form is successfully submitted
-        }
-    });
-});
+// $('#myForm').submit(function(e){
+//     e.preventDefault();
+//     $.ajax({
+//         url:'http://127.0.0.1:5000/recognize',
+//         type:'post',
+//         data:$('#myForm').serialize(),
+//         success:function(){
+//             //whatever you wanna do after the form is successfully submitted
+//         }
+//     });
+// });
 
 $(document).ready(function () {
     drawSplineChart();

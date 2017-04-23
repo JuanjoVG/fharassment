@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard Starter UI, by Keen IO</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'/>
+    <link rel="stylesheet" type="text/css" href="./static/assets/lib/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="./static/assets/css/keen-dashboards.css"/>
+    <!-- Load c3.css -->
+    <link href="./static/assets/css/c3.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+</head>
+<body class="application">
+
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+            </a>
+            <a class="navbar-brand" href="./">fHarassment</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <div class="input-group">
+                <form id="myForm" action="http://f74e6a99.ngrok.io/recognize" method="post">
+                    <!-- TODO: poner url de Edu -->
+                    <ul class="nav navbar-nav navbar-left">
+                        <li><label for="audio">Select Audio files</label>
+                            <input id="audio" type="file" name="audio" multiple>
+                        <li><label for="text">Select WhatsApp Conversation</label>
+                            <input id="text" type="file" name="text" multiple>
+                        <li><label for="audio"> </label>
+                            <input type="submit" value="Analyze!"></li>
+                    </ul>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+
+        <div class="col-sm-8">
+            <div class="chart-wrapper">
+                <div class="chart-title">
+                    Pageviews by browser (past 24 hours)
+                </div>
+                <div class="chart-stage">
+                    <div id="chart"></div>
+                </div>
+                <div class="chart-notes">
+                    This is a sample text region to describe this chart.
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-4">
+            <div class="chart-wrapper">
+                <div class="chart-title">
+                    Pageviews by browser (past 5 days)
+                </div>
+                <div class="chart-stage">
+                    <div id="chart-02"></div>
+                </div>
+                <div class="chart-notes">
+                    Notes go down here
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="row">
+
+        <div class="col-sm-4">
+            <div class="chart-wrapper">
+                <div class="chart-title">
+                    Impressions by advertiser
+                </div>
+                <div class="chart-stage">
+                    <div id="chart-03"></div>
+                </div>
+                <div class="chart-notes">
+                    Notes go down here
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-4">
+            <div class="chart-wrapper">
+                <div class="chart-title">
+                    Impressions by device
+                </div>
+                <div class="chart-stage">
+                    <div id="chart-04"></div>
+                </div>
+                <div class="chart-notes">
+                    Notes go down here
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-4">
+            <div class="chart-wrapper">
+                <div class="chart-title">
+                    Impressions by country
+                </div>
+                <div class="chart-stage">
+                    <div id="chart-05"></div>
+                </div>
+                <div class="chart-notes">
+                    Notes go down here
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="chart-wrapper">
+                <img data-src="holder.js/100%x150/white">
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="chart-wrapper">
+                <img data-src="holder.js/100%x150/white">
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="chart-wrapper">
+                <img data-src="holder.js/100%x150/white">
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="chart-wrapper">
+                <img data-src="holder.js/100%x150/white">
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <p class="small text-muted">Built with &#9829; by <a href="https://keen.io">Keen IO</a></p>
+
+</div>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="./static/assets/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="./static/assets/lib/holderjs/holder.js"></script>
+<script>
+    Holder.add_theme("white", {background: "#fff", foreground: "#a7a7a7", size: 10});
+</script>
+
+<script type="text/javascript" src="./static/assets/lib/keen-js/dist/keen.min.js"></script>
+<script type="text/javascript" src="./static/assets/js/meta.js"></script>
+
+<script type="text/javascript">
+
+    function drawSplineChart() {
+        var chart = c3.generate({
+            bindto: '#chart',
+            data: {
+                columns: [
+                    ['data1', 30, 200, 100, 400, 150, 250],
+                    ['data2', 130, 100, 140, 200, 150, 50]
+                ],
+                type: 'spline'
+            }
+        });
+    }
+
+    $('#myForm').submit(function (e) {
+        e.preventDefault();
+        $.ajax({
+            url: 'http://127.0.0.1:5000/recognize',
+            type: 'post',
+            data: $('#myForm').serialize(),
+            success: function () {
+                //whatever you wanna do after the form is successfully submitted
+            }
+        });
+    });
+
+    $(document).ready(function () {
+        drawSplineChart();
+    });
+
+</script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+<!-- Load d3.js and c3.js -->
+<script src="./static/assets/js/d3.v3.min.js" charset="utf-8"></script>
+<script src="./static/assets/js/c3.min.js"></script>
+
+</body>
+</html>
