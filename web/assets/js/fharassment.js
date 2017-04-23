@@ -68,16 +68,6 @@ $('#myForm').submit(function(e){
         type:'post',
         data:$('#myForm').serialize(),
         success:function(data){
-            data = response;//TODO: quitar el hardcoded XD
-            chart.load({
-                data: {
-                    json: data,
-                    keys: {
-                        x: 'date',
-                        value: ['anger', 'disgust', 'fear', 'joy', 'sadness']
-                    },
-                    type: "spline"}
-            });
         }
     });
 });
