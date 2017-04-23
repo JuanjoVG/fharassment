@@ -38,13 +38,12 @@ def analyze_sentiments(parsed_text):
     return tone_scores
 
 
-def is_there_being_harassment(sentiments_by_author):
+def detect_harassment(sentiments_by_author):
     scores = get_scores(sentiments_by_author)
     hd = HarassmentDetector()
     hd.init()
     result = hd.detect(scores)
-    print(result)
-    pass
+    return result
 
 
 def get_scores(sentiments_by_author):
@@ -56,6 +55,11 @@ def get_scores(sentiments_by_author):
             scores.append(sentiments[s])
     return scores
 
+
+def get_harassment_response(harassment):
+    return harassment.tolist()
+
+
 @app.route("/recognize", methods=["POST"])
 def hello():
     recognition_type = request.args.get("type")
@@ -64,11 +68,9 @@ def hello():
             whats_app_file = request.data.decode("utf-8")
             parsed_text = parse_whats_app_chat(whats_app_file)
             tone_scores = analyze_sentiments(parsed_text)
-            if is_there_being_harassment(tone_scores):
-                return "Looks like " + "author" + " is being harassed"
-            else:
-                return "I can't conclude anything"
-            return json.dumps(tone_scores, indent=2)
+            harassment = detect_harassment(tone_scores)
+            response = get_harassment_response(harassment)
+            return json.dumps(response, indent=2)
         elif recognition_type == "audio":
             audio_file = request.files
             speech_to_text.parse_google()
