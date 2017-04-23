@@ -143,17 +143,17 @@ def bye():
             {'date': '2016-05-22', 'anger': 0.1, 'disgust': 0.2, 'fear': 0.01, 'joy': 0.89, 'sadness': 0.3, 'tensor': [1, 0, 0]}
         ]},
         {'id': "juanjo", 'values': [
-            {'date': '2016-05-16', 'anger': 0.9, 'disgust': 0.4, 'fear': 0.01, 'joy': 0.1, 'sadness': 0.3,
+            {'date': '2016-05-16', 'anger': 0.5, 'disgust': 0.3, 'fear': 0.01, 'joy': 0.1, 'sadness': 0.3,
              'tensor': [1, 0, 0]},
             {'date': '2016-05-18', 'anger': 0.34, 'disgust': 0.2, 'fear': 0.01, 'joy': 0.1, 'sadness': 0.3,
              'tensor': [1, 0, 0]},
-            {'date': '2016-05-19', 'anger': 0.24, 'disgust': 0.5, 'fear': 0.6, 'joy': 0.01, 'sadness': 0.2,
+            {'date': '2016-05-19', 'anger': 0.24, 'disgust': 0.5, 'fear': 0.6, 'joy': 0.01, 'sadness': 0.5,
              'tensor': [1, 0, 0]},
-            {'date': '2016-05-17', 'anger': 0.8, 'disgust': 0.4, 'fear': 0.01, 'joy': 0.1, 'sadness': 0.3,
+            {'date': '2016-05-17', 'anger': 0.4, 'disgust': 0.5, 'fear': 0.5, 'joy': 0.1, 'sadness': 0.6,
              'tensor': [0, 0, 1]},
-            {'date': '2016-05-20', 'anger': 0.21, 'disgust': 0.2, 'fear': 0.01, 'joy': 0.4, 'sadness': 0.01,
+            {'date': '2016-05-20', 'anger': 0.41, 'disgust': 0.43, 'fear': 0.5, 'joy': 0.4, 'sadness': 0.08,
              'tensor': [1, 0, 0]},
-            {'date': '2016-05-21', 'anger': 0.2, 'disgust': 0.2, 'fear': 0.01, 'joy': 0.02, 'sadness': 0.7,
+            {'date': '2016-05-21', 'anger': 0.1, 'disgust': 0.26, 'fear': 0.01, 'joy': 0.02, 'sadness': 0.7,
              'tensor': [1, 0, 0]},
             {'date': '2016-05-22', 'anger': 0.1, 'disgust': 0.2, 'fear': 0.01, 'joy': 0.89, 'sadness': 0.3,
              'tensor': [1, 0, 0]}
