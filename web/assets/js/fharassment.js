@@ -43,7 +43,7 @@ function drawSplineChart() {
 $('#myForm').submit(function(e){
     e.preventDefault();
     $.ajax({
-        url: 'http://f74e6a99.ngrok.io:5000/recognize',
+        url: 'http://ab95aeee.ngrok.io:5000/recognize',
         type:'post',
         data:$('#myForm').serialize(),
         success:function(data){
