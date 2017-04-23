@@ -2,7 +2,7 @@ from SpeechToText import SpeechToText
 from ToneAnalyzer import ToneAnalyzer
 
 speechToText = SpeechToText()
-text = speechToText.parse_google('media/sergiomalo.wav')
+text = speechToText.transcript_from_file('media/sergiomalo.wav')
 
 toneAnalyzer = ToneAnalyzer()
 tones_score = toneAnalyzer.analyze(text)

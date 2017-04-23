@@ -72,9 +72,9 @@ def hello():
             response = get_harassment_response(harassment)
             return json.dumps(response, indent=2)
         elif recognition_type == "audio":
-            audio_file = request.files
-            speech_to_text.parse_google()
-            return "audio"
+            audio_file = request.files['audio']
+            transcription = speech_to_text.transcript_audio(audio_file.stream)
+            return transcription
         else:
             abort(400)
     else:
@@ -82,4 +82,4 @@ def hello():
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
