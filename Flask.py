@@ -48,9 +48,9 @@ def detect_harassment(sentiments_by_author):
 
 def get_scores(sentiments_by_author):
     scores = []
+    print(sentiments_by_author)
     for a in sentiments_by_author:
         sentiments = sentiments_by_author[a]
-        print(sentiments)
         for s in sentiments:
             scores.append(sentiments[s])
     return scores

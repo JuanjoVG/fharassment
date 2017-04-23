@@ -25,7 +25,7 @@ class HarassmentDetector:
         ds = ts.get_dataset()
 
         for _ in range(1000):
-            batch_xs, batch_ys = ds.next_batch(5)
+            batch_xs, batch_ys = ds.next_batch(1)  # TODO: Change by 5
             self.sess.run(train_step, feed_dict={self.x: batch_xs, y_: batch_ys})
         pass
 
