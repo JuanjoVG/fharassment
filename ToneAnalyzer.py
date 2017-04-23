@@ -11,4 +11,8 @@ class ToneAnalyzer:
         tones = \
         self.tone_analyzer.tone(text=text, tones='emotion', sentences=False)['document_tone']['tone_categories'][0][
             'tones']
-        return tones
+
+        tone_scores = {}
+        for tone in tones:
+            tone_scores[tone['tone_id']] = tone['score']
+        return tone_scores

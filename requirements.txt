@@ -1,2 +1,4 @@
+tensorflow
+flask
 google-cloud-speech==0.25.1
 watson-developer-cloud==0.25.2
