@@ -3,6 +3,7 @@ import re
 
 from flask import Flask, request, abort
 
+from HarassmentDetector import HarassmentDetector
 from SpeechToText import SpeechToText
 from ToneAnalyzer import ToneAnalyzer
 
@@ -38,8 +39,22 @@ def analyze_sentiments(parsed_text):
 
 
 def is_there_being_harassment(sentiments_by_author):
+    scores = get_scores(sentiments_by_author)
+    hd = HarassmentDetector()
+    hd.init()
+    result = hd.detect(scores)
+    print(result)
     pass
 
+
+def get_scores(sentiments_by_author):
+    scores = []
+    for a in sentiments_by_author:
+        sentiments = sentiments_by_author[a]
+        print(sentiments)
+        for s in sentiments:
+            scores.append(sentiments[s])
+    return scores
 
 @app.route("/recognize", methods=["POST"])
 def hello():
@@ -49,10 +64,10 @@ def hello():
             whats_app_file = request.data.decode("utf-8")
             parsed_text = parse_whats_app_chat(whats_app_file)
             tone_scores = analyze_sentiments(parsed_text)
-            # if is_there_being_harassment(tone_scores):
-            #     return "Looks like " + author + " is being harassed"
-            # else:
-            #     return "I can't conclude anything"
+            if is_there_being_harassment(tone_scores):
+                return "Looks like " + "author" + " is being harassed"
+            else:
+                return "I can't conclude anything"
             return json.dumps(tone_scores, indent=2)
         elif recognition_type == "audio":
             audio_file = request.files

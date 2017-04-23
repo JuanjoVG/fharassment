@@ -59,4 +59,4 @@ class HarassmentDetector:
             return
         x_test = array(tone_scores).reshape(1, 10)
         answer = self.sess.run(self.y, feed_dict={self.x: x_test})
-        print(answer)
+        return answer
