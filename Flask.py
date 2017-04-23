@@ -3,12 +3,14 @@ import re
 
 import flask
 from flask import Flask, request, abort
+from flask_cors import CORS
 
 from HarassmentDetector import HarassmentDetector
 from SpeechToText import SpeechToText
 from ToneAnalyzer import ToneAnalyzer
 
 app = Flask(__name__)
+CORS(app)
 speech_to_text = SpeechToText()
 tone_analyzer = ToneAnalyzer()
 
@@ -49,7 +51,6 @@ def detect_harassment(sentiments_by_author):
 
 def get_scores(sentiments_by_author):
     scores = []
-    print(sentiments_by_author)
     for a in sentiments_by_author:
         sentiments = sentiments_by_author[a]
         for s in sentiments:
@@ -95,12 +96,13 @@ def hello():
             for user in parsed_text.keys():
                 response.append({"id": user, 'values': []})
 
-            print(response)
-
             for d in days:
                 parsed_text_day = filter_by_day(parsed_text, d)
                 tone_scores = analyze_sentiments(parsed_text_day)
                 harassment = detect_harassment(tone_scores)
+
+                print(tone_scores)
+                print(get_harassment_response(harassment))
 
                 new_obj = tone_scores[response[0]["id"]]
                 new_obj['date'] = d
