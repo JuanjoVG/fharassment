@@ -37,7 +37,7 @@ class SpeechToText:
         speech_client = speech.Client()
 
         content = audio_file.read()
-        audio_sample = self.speech_client.sample(
+        audio_sample = speech_client.sample(
             content=content,
             source_uri=None,
             encoding='LINEAR16',
